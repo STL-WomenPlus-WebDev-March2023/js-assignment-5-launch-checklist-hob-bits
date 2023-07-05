@@ -1,12 +1,12 @@
-let scriptHelper = require('./scriptHelper.js');
+const scriptHelper = require('./scriptHelper.js');
 
 window.addEventListener("load", function() {
    let listedPlanets;
    let listedPlanetsResponse = scriptHelper.myFetch();
-   listedPlanetsResponse.then(function (result) {
+   listedPlanetsResponse.then(function(result) {
        listedPlanets = result;
        console.log(listedPlanets);
-   }).then(function () {
+   }).then(function() {
         console.log(listedPlanets);
         let planet = scriptHelper.pickPlanet(listedPlanets);
         let name = planet.name;
@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
         let distance = planet.distance;
         let moons = planet.moons;
         let imageUrl = planet.imageUrl;
-        scriptHelper.addDestinationInfo(planet, name, diameter, star, distance, moons, imageUrl);
+        let destinationInfo = scriptHelper.addDestinationInfo(planet, name, diameter, star, distance, moons, imageUrl);
+            return destinationInfo;
     })
-   
 });

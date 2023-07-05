@@ -1,4 +1,3 @@
-// Write your helper functions here!
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -35,8 +34,10 @@ function validateInput(testInput) {
       });
 }
 
-function formSubmission(document, pilotInput, copilotInput, fuelLevelInput, cargoMassInput) {
-    let form = document.querySelector("testForm");
+console.log(testInput);
+
+function formSubmission(document, list, pilotInput, copilotInput, fuelLevelInput, cargoMassInput) {
+    list = document.querySelector("testForm");
     pilotInput = document.querySelector("input[name=pilotName]");
     copilotInput = document.querySelector("input[name=copilotName]");
     fuelLevelInput = document.querySelector("input[name=fuelLevel]");
@@ -47,35 +48,34 @@ function formSubmission(document, pilotInput, copilotInput, fuelLevelInput, carg
     let copilotStatus = document.getElementById("copilotStatus");
     let fuelStatus = document.getElementById("fuelStatus");
     let cargoStatus = document.getElementById("cargoStatus");
-        if (validateInput(form)) {
-            pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`
-            copilotStatus.innerHTML = `Copilot ${copilotInput.value} is ready for launch.`
-                if (fuelLevelInput.value < 10000) {
+        list = validateInput(list);
+            pilotStatus.innerHTML = `Pilot ${list.pilotInput.value} is ready for launch.`
+            copilotStatus.innerHTML = `Copilot ${list.copilotInput.value} is ready for launch.`
+                if (list.fuelLevelInput.value < 10000) {
                     faultyItems.innerHTML = "There is not enough fuel for the journey."
                     launchStatus.innerHTML = "Shuttle not ready for launch."
                     launchStatus.style.color = "red"
                     fuelStatus.innerHTML = "Fuel level too low for launch."
-                } else if (fuelLevelInput.value >= 10000) {
+                } else if (list.fuelLevelInput.value >= 10000) {
                     launchStatus.innerHTML = "Shuttle is ready for launch."
                     launchStatus.style.color = "green"
-                    fuelStatus.innerHTML = `Fuel level is ${fuelLevelInput.value}L.`
+                    fuelStatus.innerHTML = `Fuel level is ${list.fuelLevelInput.value}L.`
                 };
-                if (cargoMassInput.value > 10000) {
+                if (list.cargoMassInput.value > 10000) {
                     faultyItems.innerHTML = "There is too much mass for the shuttle to take off."
                     launchStatus.innerHTML = "Shuttle not ready for launch."
                     launchStatus.style.color = "red"
                     cargoStatus.innerHTML = "There is too much mass for the shuttle to take off."
-                } else if (fuelLevelInput.value <= 10000) {
+                } else if (list.fuelLevelInput.value <= 10000) {
                     launchStatus.innerHTML = "Shuttle is ready for launch."
                     launchStatus.style.color = "green"
-                    cargoStatus.innerHTML = `Cargo mass is ${cargoMassInput.value}kg.`
+                    cargoStatus.innerHTML = `Cargo mass is ${list.cargoMassInput.value}kg.`
                 };
         };
-};
 
 async function myFetch() {
     let planetsReturned;
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         response.json().then(function(json) {
             console.log(json);
         });
