@@ -17,8 +17,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    let form = document.querySelector("testForm");
-      form.addEventListener("submit", function(event) {
+    testInput = document.querySelector("testForm");
+    testInput.addEventListener("submit", function(event) {
         let pilotName = document.querySelector("input[name=pilotName]");
         let copilotName = document.querySelector("input[name=copilotName]");
         let fuelLevel = document.querySelector("input[name=fuelLevel]");
