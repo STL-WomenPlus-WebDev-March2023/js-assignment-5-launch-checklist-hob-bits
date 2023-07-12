@@ -16,7 +16,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 };
 
 function validateInput(testInput) {
-    testInput = document.querySelector("testForm");
         if (testInput === "") {
             return "Empty";
         } else if (isNaN(testInput)) {
@@ -37,6 +36,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             window.alert("Pilot and copilot names cannot be numeric, and fuel status and cargo status inputs must be numeric values.");
         } else {
             let launchStatus = document.getElementById("launchStatus");
+            list.style.visibility = "visible";
             pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch.`;
             copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch.`;
                 if (fuelLevel < 10000 && cargoMass > 10000) {

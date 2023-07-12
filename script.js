@@ -12,10 +12,10 @@ window.addEventListener("load", function () {
 
     let form = document.querySelector("form");
     let list = document.getElementById("faultyItems");
+    list.style.visibility = "hidden";
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
-        list.style.visibility = "visible";
         let pilotName = document.querySelector("input[name=pilotName]");
             pilot = pilotName.value;
         let copilotName = document.querySelector("input[name=copilotName]");
