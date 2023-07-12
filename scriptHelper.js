@@ -19,9 +19,9 @@ function validateInput(testInput) {
         if (testInput === "") {
             return "Empty";
         } else if (isNaN(testInput)) {
-            return "Not a number";
+            return "Not a Number";
         } else if (typeof testInput === "number") {
-            return "Is a number";
+            return "Is a Number";
         };
 };
 
@@ -32,13 +32,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     let cargoStatus = document.getElementById("cargoStatus");
         if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
             window.alert("All fields are required.");
-        } else if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number") {
+        } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoMass) === "Not a Number") {
             window.alert("Pilot and copilot names cannot be numeric, and fuel status and cargo status inputs must be numeric values.");
         } else {
             let launchStatus = document.getElementById("launchStatus");
             list.style.visibility = "visible";
             pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-            copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch`;
+            copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
                 if (fuelLevel < 10000 && cargoMass > 10000) {
                     launchStatus.innerHTML = "Shuttle Not Ready for Launch";
                     launchStatus.style.color = "rgb(199, 37, 78)";
